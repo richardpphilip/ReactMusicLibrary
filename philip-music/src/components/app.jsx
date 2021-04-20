@@ -27,8 +27,13 @@ class App extends Component {
       <Music 
         key={music.id}
         music={music}
+        deleteMusic = {this.deleteMusic}
       />
     )
+  }
+
+  deleteMusic(prop){
+      axios.delete(`http://127.0.0.1:8000/music/${prop}/`)
   }
 
   render(){
