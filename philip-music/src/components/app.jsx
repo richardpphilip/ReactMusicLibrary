@@ -1,32 +1,32 @@
-import './App.css';
+
 import React, {Component} from 'react';
 import axios from 'axios'
-import Player from './components/Player';
-import PlayerTable from './components/PlayerTable';
+import Music from './Music/Music';
+import MusicTable from './Music/MusicTable';
 
 class App extends Component {
   state = {
-    players: []
+    allMusic: []
   }
 
   componentDidMount(){
     //gets called after the component did mount (rendered to the page)
     console.log("component did mount");
-    this.getAllPlayers();
+    this.getAllMusic();
   }
 
-  async getAllPlayers(){
-    let response = await axios.get('http://127.0.0.1:8000/players/');
+  async getAllMusic(){
+    let response = await axios.get('http://127.0.0.1:8000/music/');
     this.setState({
-      players: response.data
+      allMusic: response.data
     })
   }
 
-  mapPlayers(){
-    return this.state.players.map(player =>
-      <Player 
-        key={player.id}
-        player={player}
+  mapMusic(){
+    return this.state.allMusic.map(music =>
+      <Music 
+        key={music.id}
+        music={music}
       />
     )
   }
@@ -35,7 +35,7 @@ class App extends Component {
     console.log("this.state", this.state);
     return(
     <div>
-        <PlayerTable mapPlayers={() => this.mapPlayers()}/>
+        <MusicTable mapMusic={() => this.mapMusic()}/>
     </div>
     );
   }
