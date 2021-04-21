@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import Music from './Music/Music';
 import MusicTable from './Music/MusicTable';
+import SongCreator from './SongCreator/SongCreator'
 
 class App extends Component {
     constructor(){
@@ -28,6 +29,11 @@ class App extends Component {
     })
   }
 
+  addNewSong(song){
+    axios.post('http://127.0.0.1:8000/music/', song)
+    this.getAllMusic();
+  }
+
   mapMusic(){
     console.log("music state", this.state);
     return this.state.allMusic.map(music =>
@@ -51,6 +57,7 @@ class App extends Component {
     return(
     <div>
         <MusicTable mapMusic={() => this.mapMusic()}/>
+        <SongCreator addNewSong= {this.addNewSong.bind(this)}/>
     </div>
     );
   }
