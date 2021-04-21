@@ -5,13 +5,21 @@ import Music from './Music/Music';
 import MusicTable from './Music/MusicTable';
 
 class App extends Component {
-  state = {
-    allMusic: []
+    constructor(){
+        super();
+        this.getAllMusic = this.getAllMusic.bind(this);
+    }
+    state = {
+        allMusic: []
   }
 
   componentDidMount(){
     //gets called after the component did mount (rendered to the page)
     console.log("component did mount");
+    this.getAllMusic();
+  }
+
+  componentDidUpdate(){
     this.getAllMusic();
   }
 
@@ -32,8 +40,9 @@ class App extends Component {
     )
   }
 
+
   deleteMusic(prop){
-      axios.delete(`http://127.0.0.1:8000/music/${prop}/`)
+      axios.delete(`http://127.0.0.1:8000/music/${prop}/`);
   }
 
   render(){
