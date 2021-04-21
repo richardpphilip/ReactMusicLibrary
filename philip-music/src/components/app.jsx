@@ -29,8 +29,8 @@ class App extends Component {
     })
   }
 
-  addNewSong(song){
-    axios.post('http://127.0.0.1:8000/music/', song)
+   async addNewSong(song){
+    await axios.post('http://127.0.0.1:8000/music/', song)
     this.getAllMusic();
   }
 

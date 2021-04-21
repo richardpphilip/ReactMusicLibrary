@@ -52,15 +52,15 @@ class SongCreator extends Component {
                             <label>Artist:</label>
                             <input type='text' name='artist' value = {this.state.artist} onChange={this.handleChange}/>
                         </div>
-                        <div className= 'col-md-5'>
+                        <div className= 'col-md-4'>
                             <label>Album:</label>
                             <input type='text' name='album' value = {this.state.album} onChange={this.handleChange}/>
                         </div>
-                        <div className='col-md-6'>
+                        <div className='col-md-4'>
                             <label>Release Date:</label>
                             <input type='date' name='release_date' value = {this.state.release_date} onChange={this.handleChange}/>
                         </div>
-                        <div className='col-md-7'>
+                        <div className='col-md-4'>
                             <label>Likes:</label>
                             <input type='text' name='like' value = {this.state.like} onChange={this.handleChange}/>
                         </div>
