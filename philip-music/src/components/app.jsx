@@ -17,11 +17,9 @@ class App extends Component {
     //gets called after the component did mount (rendered to the page)
     console.log("component did mount");
     this.getAllMusic();
+   
   }
 
-  componentDidUpdate(){
-    this.getAllMusic();
-  }
 
   async getAllMusic(){
     let response = await axios.get('http://127.0.0.1:8000/music/');
@@ -31,18 +29,21 @@ class App extends Component {
   }
 
   mapMusic(){
+    console.log("music state", this.state);
     return this.state.allMusic.map(music =>
       <Music 
         key={music.id}
         music={music}
-        deleteMusic = {this.deleteMusic}
+        deleteMusic = {(songId) => this.deleteMusic(songId)}
       />
     )
   }
 
 
-  deleteMusic(prop){
-      axios.delete(`http://127.0.0.1:8000/music/${prop}/`);
+  async deleteMusic(songId){
+      console.log("DELETE", songId);
+      await axios.delete(`http://127.0.0.1:8000/music/${songId}/`);
+      this.getAllMusic();
   }
 
   render(){
