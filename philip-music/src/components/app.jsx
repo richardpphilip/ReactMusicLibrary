@@ -4,6 +4,7 @@ import axios from 'axios'
 import Music from './Music/Music';
 import MusicTable from './Music/MusicTable';
 import SongCreator from './SongCreator/SongCreator'
+import SearchBar from './SearchBar/SearchBar';
 
 class App extends Component {
     constructor(){
@@ -58,6 +59,7 @@ class App extends Component {
     <div>
         <MusicTable mapMusic={() => this.mapMusic()}/>
         <SongCreator addNewSong= {this.addNewSong.bind(this)}/>
+        <SearchBar />
     </div>
     );
   }
