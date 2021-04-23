@@ -5,7 +5,7 @@ const SearchBar = (props) =>{
                 <hr />
                 <h2>Search</h2>
                         <div className='col-md-4'>
-                            <label>Title Search:</label>
+                            <label>Search:</label>
                             <input onChange={props.handleInput} type ="text" />
                         </div>
             </div>

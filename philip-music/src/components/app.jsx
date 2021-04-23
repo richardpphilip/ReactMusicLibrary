@@ -54,7 +54,7 @@ if(event.target.value === ""){
   element = this.state.allMusic
   return element
 }
-return element.title.includes(this.state.search);
+return element.title.includes(this.state.search) || element.artist.includes(this.state.search) || element.album.includes(this.state.search) || element.release_date.includes(this.state.search) 
 });
 this.setState({
   allMusic : filteredMusic
@@ -73,9 +73,9 @@ this.setState({
     console.log("this.state", this.state);
     return(
     <div>
+        <SearchBar handleInput= {this.handleInput} />
         <MusicTable mapMusic= {() => this.mapMusic()}/>
         <SongCreator addNewSong= {this.addNewSong.bind(this)}/>
-        <SearchBar handleInput= {this.handleInput} />
     </div>
     );
   }

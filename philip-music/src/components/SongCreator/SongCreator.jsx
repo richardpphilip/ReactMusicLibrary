@@ -65,8 +65,8 @@ class SongCreator extends Component {
                             <input type='text' name='like' value = {this.state.like} onChange={this.handleChange}/>
                         </div>
                         <div>
-                            <div className= 'col=md-4'>
-                                <input type='submit' value='Add'/>
+                            <div>
+                                <input type='submit' value='Click here to add your song!'/>
                             </div>
                         </div>
                     </div>
