@@ -12,7 +12,8 @@ class App extends Component {
         this.getAllMusic = this.getAllMusic.bind(this);
     }
     state = {
-        allMusic: []
+        allMusic: [],
+        search : ''
   }
 
   componentDidMount(){
@@ -46,14 +47,14 @@ class App extends Component {
   }
 
 handleInput = (event) => {
-this.setState({search: event.target.value});
+this.setState({ search: event.target.value});
 const filteredMusic = this.state.allMusic.filter(element => {
-if(event.target.value == ''){
+if(event.target.value === ""){
   this.getAllMusic();
   element = this.state.allMusic
   return element
 }
-return element.title.toLowerCase().includes(this.state.search.toLowerCase());
+return element.title.includes(this.state.search);
 });
 this.setState({
   allMusic : filteredMusic
@@ -72,7 +73,7 @@ this.setState({
     console.log("this.state", this.state);
     return(
     <div>
-        <MusicTable mapMusic={() => this.mapMusic()}/>
+        <MusicTable mapMusic= {() => this.mapMusic()}/>
         <SongCreator addNewSong= {this.addNewSong.bind(this)}/>
         <SearchBar handleInput= {this.handleInput} />
     </div>
