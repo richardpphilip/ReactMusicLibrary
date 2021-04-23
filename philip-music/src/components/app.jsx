@@ -16,7 +16,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    //gets called after the component did mount (rendered to the page)
     console.log("component did mount");
     this.getAllMusic();
    
@@ -46,6 +45,22 @@ class App extends Component {
     )
   }
 
+handleInput = (event) => {
+this.setState({search: event.target.value});
+const filteredMusic = this.state.allMusic.filter(element => {
+if(event.target.value == ''){
+  this.getAllMusic();
+  element = this.state.allMusic
+  return element
+}
+return element.title.toLowerCase().includes(this.state.search.toLowerCase());
+});
+this.setState({
+  allMusic : filteredMusic
+})
+
+  }
+
 
   async deleteMusic(songId){
       console.log("DELETE", songId);
@@ -59,7 +74,7 @@ class App extends Component {
     <div>
         <MusicTable mapMusic={() => this.mapMusic()}/>
         <SongCreator addNewSong= {this.addNewSong.bind(this)}/>
-        <SearchBar />
+        <SearchBar handleInput= {this.handleInput} />
     </div>
     );
   }
